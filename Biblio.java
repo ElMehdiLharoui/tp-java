@@ -21,7 +21,7 @@ public class Biblio {
 	}
 	public boolean ajouteLivre (Livre E) 
 	{
-		if(lisLivres.indexOf(E)!=-1) return false;
+		if(check_book_ex(E)) return false;
 		if(isFilled())return false;
 		lisLivres.add(E);
 		return true;
@@ -36,7 +36,7 @@ public class Biblio {
 		for (Livre livre : lisLivres) {
 			sBuffer.append("----------------");
 			sBuffer.append(livre.toString());
-			sBuffer.append("----------------");
+			sBuffer.append("\n----------------");
 		}
 		
 		return sBuffer.toString();
@@ -48,6 +48,12 @@ public class Biblio {
 		if(livre.IsOfAutor(auteur))lis.add(livre);
 	  }
 	  return lis;
+	}
+	private boolean check_book_ex(Livre E){
+		for (Livre livre : lisLivres) {
+			if(livre.equals(E))return true;
+		}
+		return false;
 	}
 }
 

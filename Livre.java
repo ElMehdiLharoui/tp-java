@@ -41,28 +41,27 @@ public boolean IsOfAutor(String aut)
 	}
 	return false;
 }
- public static Livre creaLivre() 
+ public static Livre creaLivre(Scanner Se) 
  {
-	 Scanner Se=new Scanner(System.in);
 	 String titre,ISNB,temp;
 	 double prix;
-	 String[] auts;
 	 Vector<String> tempStrings=new Vector<String>();
-	 System.out.print("\nDonner le titre");
+	 System.out.print("\nDonner le titre :");
 	 titre=Se.nextLine();
-	 System.out.print("Donner le ISBN");
+	 System.out.print("Donner le ISBN :");
 	 ISNB=Se.nextLine();
-	 System.out.print("Donner le prix");
+	 System.out.print("Donner le prix :");
 	 prix=Double.parseDouble( Se.nextLine());
-	 do {
+	 do
+		{
 		 System.out.print("Entrer un auteur (ligne vide = fin):");
 		 temp=Se.nextLine();
-		 tempStrings.add(temp);
-	 
-	 }while(!temp.equals(""));
-	 
-	 auts=(String[])tempStrings.toArray();
-	 
+		 if(!temp.equals(""))tempStrings.add(temp);
+	 	}while(!temp.equals(""));
+	 String[] auts=new String[tempStrings.size()];
+	 for (int i = 0; i < tempStrings.size(); i++) {
+	 	auts[i]=tempStrings.get(i);
+	 }
 	 return new Livre(titre,auts,ISNB,prix);
  }
 	
